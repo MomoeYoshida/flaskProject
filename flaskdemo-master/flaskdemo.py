@@ -13,7 +13,7 @@ def home():
 
 @app.route('/about')
 def about():
-    return "I am still working on this"
+    return render_template("about.html")
 
 
 @app.route('/search', methods=['POST', 'GET'])
@@ -27,6 +27,7 @@ def search():
 @app.route('/results')
 def results():
     search_term = session['search_term']
+    # print(wikipedia.page(search_term).title)
     page = get_page(search_term)
     return render_template("results.html", page=page)
 
